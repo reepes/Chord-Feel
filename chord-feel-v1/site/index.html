@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#11110f" />
+  <meta name="description" content="Generate chord progressions by key, mode, feel, and harmonic adventurousness." />
+  <title>Chord Feel</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">CHORD FEEL</p>
+        <h1>Generate harmony by <span>feeling</span>, not formula.</h1>
+        <p class="lede">Pick a key, tonal center, and emotional target. The engine weights harmonic motion, chord color, modal mixture, and resolution to build a progression you can shape.</p>
+      </div>
+      <aside class="feel-readout" aria-label="Current feel profile">
+        <p id="feelLabel">Dreamy</p>
+        <strong id="feelDescription">Open, colorful harmony with soft cadences and suspended motion.</strong>
+        <div class="mini-bars" id="feelBars"></div>
+      </aside>
+    </section>
+
+    <section class="controls-panel" aria-label="Generator controls">
+      <div class="control-grid">
+        <label><span>Key</span><select id="keySelect"></select></label>
+        <label><span>Mode</span><select id="modeSelect"><option value="major">Major</option><option value="minor">Minor</option></select></label>
+        <label><span>Feel</span><select id="feelSelect"></select></label>
+        <label><span>Length</span><select id="lengthSelect"><option value="4">4 chords</option><option value="8">8 chords</option><option value="16">16 chords</option></select></label>
+      </div>
+
+      <div class="slider-row">
+        <label class="slider-control">
+          <span><b>Adventure</b><em id="adventureValue">45</em></span>
+          <input id="adventureInput" type="range" min="0" max="100" value="45" />
+          <small><i>Safe</i><i>Weird</i></small>
+        </label>
+        <label class="slider-control compact">
+          <span><b>Tempo</b><em id="bpmValue">92 BPM</em></span>
+          <input id="bpmInput" type="range" min="50" max="180" value="92" />
+          <small><i>Slow</i><i>Fast</i></small>
+        </label>
+      </div>
+      <button id="generateButton" class="generate-button">Generate progression</button>
+    </section>
+
+    <section class="progression-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR PROGRESSION</p>
+          <h2 id="progressionTitle">C major · Dreamy</h2>
+        </div>
+        <p>Lock the chords you want to keep, then generate a variation around them.</p>
+      </div>
+      <div id="chordGrid" class="chord-grid" aria-live="polite"></div>
+      <div class="transport">
+        <button id="playButton" class="primary-action">▶ Play</button>
+        <button id="variationButton">↻ Variation</button>
+        <button id="copyButton">Copy progression</button>
+      </div>
+    </section>
+
+    <footer>
+      <span>V1 · browser-only · saved locally</span>
+      <span>Borrowed chords are marked when the engine leaves the selected scale.</span>
+    </footer>
+  </main>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
